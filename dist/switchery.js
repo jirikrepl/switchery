@@ -1619,6 +1619,7 @@ const defaults = {
   disabledOpacity: 0.5,
   speed: '0.4s',
   size: 'default',
+  handleClick: true,
 };
 
 /**
@@ -1897,7 +1898,9 @@ Switchery.prototype.init = function () {
   this.setPosition();
   this.markAsSwitched();
   this.handleChange();
-  this.handleClick();
+  if (this.options.handleClick) {
+    this.handleClick();
+  }
 };
 
 /**
