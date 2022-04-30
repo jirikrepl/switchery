@@ -13,10 +13,10 @@
     "url": "https://github.com/abpetkov/switchery/issues"
   },
   "devDependencies": {
-    "uglify-js": "~2.4.8",
     "component": "^1.0.0",
-    "uglifycss": "0.0.7",
     "grunt-exec": "latest",
-    "spacejam": "latest"
+    "spacejam": "latest",
+    "uglify-js": "^3.15.4",
+    "uglifycss": "0.0.7"
   }
 }
