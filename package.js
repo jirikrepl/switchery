@@ -1,23 +1,20 @@
 // package metadata file for Meteor.js
 
-const packageName = 'jirikrepl:switchery'; // https://atmospherejs.com/mediatainment/switchery
-const where = 'client'; // where to install: 'client' or 'server'. For both, pass nothing.
-
 Package.describe({
-  name: packageName,
+  name: 'jirikrepl:switchery',
   summary: 'Switchery (official) - turns your default HTML checkbox inputs into beautiful iOS 7 style switches.',
-  version: '0.2.0', // packageJson.version,
+  version: '0.2.0',
   git: 'https://github.com/abpetkov/switchery',
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom(['METEOR@0.9.0', 'METEOR@1.0']);
-  api.export('Switchery');
-  api.addFiles(['dist/switchery.js', 'dist/switchery.css', 'meteor/export.js'], where);
+  api.versionsFrom('1.11.1');
+  api.use('ecmascript');
+  api.mainModule('meteor/index.js', 'client', { lazy: true });
 });
 
 Package.onTest(function (api) {
-  api.use(packageName, where);
-  api.use('tinytest', where);
-  api.addFiles('meteor/tests.js', where); // testing specific files
+  api.use('jirikrepl:switchery', 'client');
+  api.use('tinytest', 'client');
+  api.addFiles('meteor/tests.js', 'client'); // testing specific files
 });

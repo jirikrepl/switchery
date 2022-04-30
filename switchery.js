@@ -23,12 +23,6 @@ const classes = require('classes');
 const events = require('events');
 
 /**
- * Expose `Switchery`.
- */
-
-module.exports = Switchery;
-
-/**
  * Set Switchery default values.
  *
  * @api public
@@ -386,3 +380,5 @@ Switchery.prototype.disable = function () {
   this.switcher.style.opacity = this.options.disabledOpacity;
   this.destroy();
 };
+
+export default Switchery;
