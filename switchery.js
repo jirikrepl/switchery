@@ -1,4 +1,4 @@
-/* globals window document */
+/* globals document */
 
 /**
  * Switchery 0.8.2
@@ -124,8 +124,8 @@ Switchery.prototype.insertAfter = function (reference, target) {
 
 Switchery.prototype.setPosition = function (clicked) {
   let checked = this.isChecked();
-  const switcher = this.switcher;
-  const jack = this.jack;
+  const { switcher } = this;
+  const { jack } = this;
 
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
@@ -156,24 +156,15 @@ Switchery.prototype.setPosition = function (clicked) {
  */
 
 Switchery.prototype.setSpeed = function () {
-  let switcherProp = {};
+  const switcherProp = {
+    border: this.options.speed,
+    'box-shadow': this.options.speed,
+    'background-color': this.options.speed,
+  };
   const jackProp = {
     'background-color': this.options.speed,
     left: `${this.options.speed.replace(/[a-z]/, '') / 2}s`,
   };
-
-  if (this.isChecked()) {
-    switcherProp = {
-      border: this.options.speed,
-      'box-shadow': this.options.speed,
-      'background-color': `${this.options.speed.replace(/[a-z]/, '') * 3}s`,
-    };
-  } else {
-    switcherProp = {
-      border: this.options.speed,
-      'box-shadow': this.options.speed,
-    };
-  }
 
   transitionize(this.switcher, switcherProp);
   transitionize(this.jack, jackProp);
@@ -264,7 +255,7 @@ Switchery.prototype.handleChange = function () {
  */
 
 Switchery.prototype.handleClick = function () {
-  const switcher = this.switcher;
+  const { switcher } = this;
 
   fastclick(switcher);
   this.events.bind('click', 'bindClick');
